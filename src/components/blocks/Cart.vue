@@ -4,66 +4,18 @@
       <div class="breadcrumb__left">
         <h1 class="breadcrumb__title">SHOPPING CART</h1>
       </div>
-    </div>
-    <!-- /.breadcrumb -->
+    </div><!-- /.breadcrumb -->
     <div class="cart-box center">
       <div class="cart-box__left">
-        <div class="cart-box__content">
-          <div class="cart-box__product">
-            <a href="#">
-              <img
-                class="cart-box__img"
-                src="@/assets/images/product3.png"
-                alt="product"
-              />
-            </a>
-            <div class="cart-box__info">
-              <p class="cart-box__name" href="#">MANGO PEOPLE T-SHIRT</p>
-              <p class="cart-box__text">
-                Price:<span class="cart-box__price">$300</span>
-              </p>
-              <p class="cart-box__text">Color: Red</p>
-              <p class="cart-box__text">Size: Xl</p>
-              <label class="cart-box__text"
-                >Quantity:<input
-                  class="cart-box__input"
-                  type="number"
-                  value="2"
-              /></label>
-            </div>
-          </div>
-          <!-- /.cart-box__product -->
-          <div class="cart-box__product">
-            <a href="#">
-              <img
-                class="cart-box__img"
-                src="@/assets/images/catalog/product7.png"
-                alt="product"
-              />
-            </a>
-            <div class="cart-box__info">
-              <p class="cart-box__name" href="#">MANGO PEOPLE T-SHIRT</p>
-              <p class="cart-box__text">
-                Price:<span class="cart-box__price">$300</span>
-              </p>
-              <p class="cart-box__text">Color: Red</p>
-              <p class="cart-box__text">Size: Xl</p>
-              <label class="cart-box__text"
-                >Quantity:<input
-                  class="cart-box__input"
-                  type="number"
-                  value="2"
-              /></label>
-            </div>
-          </div>
-          <!-- /.cart-box__product -->
-        </div>
-        <!-- /.cart-box__content -->
+        <div v-if="this.cart.contents.length === 0"><p style="color: red">Cart is empty!</p></div>
+        <CartList></CartList>
         <div class="cart__buttons">
-          <button class="cart-box__button">CLEAR SHOPPING CART</button>
-          <button class="cart-box__button cart-box__button--small">
-            CONTINUE SHOPPING
-          </button>
+          <button class="cart-box__button" v-on:click="clearCart">CLEAR SHOPPING CART</button>
+          <router-link to="/catalog">
+            <button class="cart-box__button cart-box__button--small">
+              CONTINUE SHOPPING
+            </button>
+          </router-link>
         </div>
       </div>
       <!-- /.cart-box__left -->
@@ -90,7 +42,7 @@
         </form>
         <div class="checkout">
           <div class="checkout__subtitle">
-            SUB TOTAL <span class="checkout__summ">$900</span>
+            SUB TOTAL <span class="checkout__summ">$ {{ getTotalSum }}</span>
           </div>
           <div class="checkout__title">
             GRAND TOTAL
@@ -106,6 +58,25 @@
     <!-- /.cart-box -->
   </div>
 </template>
+<script>
+
+import { mapGetters, mapActions } from 'vuex';
+import CartList from '../CartList.vue';
+
+export default {
+  name: 'Cart',
+  components: {
+    CartList,
+  },
+  computed: {
+    ...mapGetters(['cart', 'getTotalSum']),
+  },
+  methods: {
+    ...mapActions(['clearCart']),
+
+  },
+};
+</script>
 <style lang="scss">
 @-webkit-keyframes vibrate {
   0% {

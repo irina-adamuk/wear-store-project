@@ -25,22 +25,17 @@
     <div class="main__product center">
       <img
         class="main__img"
-        src="@/assets/images/product/main__product.png"
+        :src="host + mainProduct.image"
         alt="photo"
       />
     </div>
 
     <section class="specification">
       <div class="specification__top">
-        <h4 class="specification__subtitle">WOMEN COLLECTION</h4>
-        <h3 class="specification__title">MOSCHINO CHEAP AND CHIC</h3>
-        <p class="specification__text">
-          Compellingly actualize fully researched processes before proactive
-          outsourcing.<br />Progressively syndicate collaborative architectures
-          before cutting-edge services. Completely visualize parallel core
-          competencies rather than exceptional portals.
-        </p>
-        <p class="specification__price">$561</p>
+        <h4 class="specification__subtitle">{{ mainProduct.collection }}</h4>
+        <h3 class="specification__title">{{ mainProduct.product_name }}</h3>
+        <p class="specification__text">{{ mainProduct.product_description }}</p>
+        <p class="specification__price">${{mainProduct.price}}</p>
       </div>
       <hr class="specification__hr" />
       <div class="specification__bottom">
@@ -187,7 +182,7 @@
         <!-- /.options -->
       </div>
       <!-- /. specification__bottom -->
-      <button class="specification__button">
+      <button class="specification__button" @click.prevent="addProduct(mainProduct)">
         <svg
           class="specification__img"
           width="32"
@@ -206,87 +201,37 @@
 
     <div class="product-box product-box--product center">
       <div class="product-box__content product-box__content--catalog">
-        <div class="product product--catalog">
-          <a href="#">
-            <img
-              class="product__img"
-              src="@/assets/images/product4.png"
-              alt="product"
-            />
-          </a>
-          <div class="product__info">
-            <a class="product__name" href="#">ELLERY X M'O CAPSULE</a>
-            <p class="product__description">
-              Known for her sculptural takes on traditional tailoring,
-              Australian arbiter of cool Kym Ellery teams up with Moda Operandi.
-            </p>
-            <p class="product__price">$52.00</p>
-          </div>
-          <a class="product__add" href="#">
-            <img
-              class="product__icon"
-              src="@/assets/images/cart.svg"
-              alt="cart"
-            />Add to Cart
-          </a>
-        </div>
-        <!-- /.product -->
-        <div class="product product--catalog">
-          <a href="#">
-            <img
-              class="product__img"
-              src="@/assets/images/product3.png"
-              alt="product"
-            />
-          </a>
-          <div class="product__info">
-            <a class="product__name" href="#">ELLERY X M'O CAPSULE</a>
-            <p class="product__description">
-              Known for her sculptural takes on traditional tailoring,
-              Australian arbiter of cool Kym Ellery teams up with Moda Operandi.
-            </p>
-            <p class="product__price">$52.00</p>
-          </div>
-          <a class="product__add" href="#">
-            <img
-              class="product__icon"
-              src="@/assets/images/cart.svg"
-              alt="cart"
-            />Add to Cart
-          </a>
-        </div>
-        <!-- /.product -->
-        <div class="product product--catalog">
-          <a href="#">
-            <img
-              class="product__img"
-              src="@/assets/images/product6.png"
-              alt="product"
-            />
-          </a>
-          <div class="product__info">
-            <a class="product__name" href="#">ELLERY X M'O CAPSULE</a>
-            <p class="product__description">
-              Known for her sculptural takes on traditional tailoring,
-              Australian arbiter of cool Kym Ellery teams up with Moda Operandi.
-            </p>
-            <p class="product__price">$52.00</p>
-          </div>
-          <a class="product__add" href="#">
-            <img
-              class="product__icon"
-              src="@/assets/images/cart.svg"
-              alt="cart"
-            />Add to Cart
-          </a>
-        </div>
-        <!-- /.product -->
-      </div>
-      <!-- /.product-box__content -->
-    </div>
-    <!-- /.product-box -->
+        <router-link to="/product">
+          <ProductList :sliceNumber="3"></ProductList>
+        </router-link>
+      </div><!-- /.product-box__content -->
+    </div><!-- /.product-box -->
   </div>
 </template>
+<script>
+import { mapActions } from 'vuex';
+
+import ProductList from '../components/ProductList.vue';
+
+export default {
+  name: 'Product',
+  data() {
+    return {
+      mainProduct: {},
+      host: 'http://localhost:3000',
+    };
+  },
+  components: {
+    ProductList,
+  },
+  methods: {
+    ...mapActions(['getCatalogList', 'getMainProduct', 'addProduct']),
+  },
+  created() {
+    this.getMainProduct(this.$route.params.id).then((data) => { this.mainProduct = data; });
+  },
+};
+</script>
 <style lang="scss">
 $colorSelect: #f16d7f;
 $colorText: #222222;

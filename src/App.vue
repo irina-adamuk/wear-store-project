@@ -4,31 +4,26 @@
       <div class="header__left">
         <router-link to="/">
           <a href="#">
-            <img src="@/assets/images/logo.svg" alt="logo" />
+            <img src="http://localhost:3000/images/home/logo.svg" alt="logo" />
           </a>
         </router-link>
-        <a class="search" href="#">
-          <img
-            class="header__search"
-            src="@/assets/images/search.svg"
-            alt="search"
-          />
-        </a>
+      <Search></Search>
       </div>
       <!-- /.header__left -->
       <div class="header__right">
         <button class="header__button">
-          <img class="header__menu" src="@/assets/images/menu.svg" alt="menu" />
+          <img class="header__menu" src="http://localhost:3000/images/home/menu.svg" alt="menu" />
         </button>
         <router-link to="/registration">
           <a class="header__link" href="registration.html">
-            <img src="@/assets/images/account.svg" alt="account" />
+            <img src="http://localhost:3000/images/home/account.svg" alt="account" />
           </a>
         </router-link>
         <router-link to="/cart">
-          <a class="header__link" href="#">
-            <img src="@/assets/images/cart.svg" alt="cart" />
-          </a>
+          <div class="header__link cart-icon" href="#">
+            <img src="http://localhost:3000/images/home/cart.svg" alt="cart" />
+            <div class="cart-count">{{ cartCounter }}</div>
+          </div>
         </router-link>
       </div>
       <!-- /.header__right -->
@@ -36,12 +31,13 @@
     <div class="nav__wrapper">
       <div class="nav__icons">
         <a class="nav__drop-icon" href="#">
-          <img src="@/assets/images/account.svg" alt="account" />
+          <img src="http://localhost:3000/images/home/account.svg" alt="account" />
         </a>
         <a class="nav__drop-icon" href="cart.html">
-          <img src="@/assets/images/cart.svg" alt="cart" />
+          <img src="http://localhost:3000/images/home/cart.svg" alt="cart" />
         </a>
       </div>
+      <Menu></Menu>
     </div>
     <!-- /.nav__wrapper -->
     <router-view />
@@ -50,7 +46,7 @@
         <div class="subscribe__left">
           <img
             class="subscribe__img"
-            src="@/assets/images/photo.png"
+            src="http://localhost:3000/images/home/photo.png"
             alt="photo"
           />
           <p class="subscribe__text">
@@ -179,6 +175,32 @@
   </div>
   <!-- /.wrapper -->
 </template>
+
+<script>
+import Search from '@/components/Search.vue';
+
+import Menu from '@/components/Menu.vue';
+import { mapGetters, mapActions } from 'vuex';
+
+export default {
+  name: 'App',
+  components: {
+    Search,
+    Menu,
+  },
+  computed: {
+    ...mapGetters(['cartCounter']),
+  },
+  methods: {
+    ...mapActions(['getCartList']),
+  },
+  created() {
+    this.getCartList();
+  },
+
+};
+</script>
+
 <style lang="scss">
 $colorSelect: #f16d7f;
 $colorText: #222222;
@@ -225,17 +247,20 @@ body {
   align-items: center;
   justify-content: space-between;
 
-  &__search {
-    margin-left: 41px;
-  }
-
   &__right a:not(:last-child) {
     margin-right: 33px;
+  }
+  &__left {
+    display: flex;
   }
 
   &__left a,
   &__right a {
     text-decoration: none;
+  }
+  &__right {
+    display: flex;
+    width: 180px;
   }
 
   &__button {
@@ -248,6 +273,24 @@ body {
       cursor: pointer;
     }
   }
+}
+.cart-icon {
+  display: block;
+  position: relative;
+}
+.cart-count {
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -6px;
+  right: -11px;
+  z-index: 1;
+  color: $colorLight;
+  font-size: 14px;
+  text-align: center;
+  background-color: $colorSelect;
+  border-radius: 50%;
 }
 /** Nav */
 .nav {
@@ -348,7 +391,7 @@ body {
 .subscribe {
   display: flex;
   min-height: 448px;
-  background-image: url("assets/images/subscribe-bg.jpg");
+  background-image: url("http://localhost:3000/images/home/subscribe-bg.jpg");
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;

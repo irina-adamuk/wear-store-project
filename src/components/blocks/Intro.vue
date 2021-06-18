@@ -2,7 +2,7 @@
   <div>
     <section class="promo center">
       <div class="promo__img">
-        <img class="promo__photo" src="@/assets/images/promo.png" alt="photo" />
+        <img class="promo__photo" src="http://localhost:3000/images/intro/promo.png" alt="photo" />
       </div>
       <div class="promo__text">
         <div class="promo__content">
@@ -22,7 +22,7 @@
           <div class="sale__item">
             <img
               class="sale__img"
-              src="@/assets/images/sale-1.jpg"
+              src="http://localhost:3000/images/intro/sale-1.jpg"
               alt="item"
             />
             <div class="sale__text">
@@ -35,7 +35,7 @@
           <div class="sale__item">
             <img
               class="sale__img"
-              src="@/assets/images/sale-2.jpg"
+              src="http://localhost:3000/images/intro/sale-2.jpg"
               alt="item"
             />
             <div class="sale__text">
@@ -48,7 +48,7 @@
           <div class="sale__item">
             <img
               class="sale__img"
-              src="@/assets/images/sale-3.jpg"
+              src="http://localhost:3000/images/intro/sale-3.jpg"
               alt="item"
             />
             <div class="sale__text">
@@ -64,7 +64,7 @@
           <div class="sale__item">
             <img
               class="sale__img sale__img--big"
-              src="@/assets/images/sale-4.jpg"
+              src="http://localhost:3000/images/intro/sale-4.jpg"
               alt="item"
             />
             <div class="sale__text">
@@ -85,170 +85,8 @@
       </p>
       <div class="product-box__content">
         <router-link to="/product">
-          <div class="product">
-            <a href="product.html">
-              <img
-                class="product__img"
-                src="@/assets/images/product1.png"
-                alt="product"
-              />
-            </a>
-            <div class="product__info">
-              <a class="product__name" href="product.html"
-                >ELLERY X M'O CAPSULE</a
-              >
-              <p class="product__description">
-                Known for her sculptural takes on traditional tailoring,
-                Australian arbiter of cool Kym Ellery teams up with Moda
-                Operandi.
-              </p>
-              <p class="product__price">$52.00</p>
-            </div>
-            <a class="product__add" href="#">
-              <img
-                class="product__icon"
-                src="@/assets/images/cart.svg"
-                alt="cart"
-              />Add to Cart
-            </a>
-          </div>
-          <!-- /.product -->
+          <ProductList :sliceNumber="6"></ProductList>
         </router-link>
-        <div class="product">
-          <a href="product.html">
-            <img
-              class="product__img"
-              src="@/assets/images/product2.png"
-              alt="product"
-            />
-          </a>
-          <div class="product__info">
-            <a class="product__name" href="product.html"
-              >ELLERY X M'O CAPSULE</a
-            >
-            <p class="product__description">
-              Known for her sculptural takes on traditional tailoring,
-              Australian arbiter of cool Kym Ellery teams up with Moda Operandi.
-            </p>
-            <p class="product__price">$52.00</p>
-          </div>
-          <a class="product__add" href="#">
-            <img
-              class="product__icon"
-              src="@/assets/images/cart.svg"
-              alt="cart"
-            />Add to Cart
-          </a>
-        </div>
-        <!-- /.product -->
-        <div class="product">
-          <a href="product.html">
-            <img
-              class="product__img"
-              src="@/assets/images/product3.png"
-              alt="product"
-            />
-          </a>
-          <div class="product__info">
-            <a class="product__name" href="product.html"
-              >ELLERY X M'O CAPSULE</a
-            >
-            <p class="product__description">
-              Known for her sculptural takes on traditional tailoring,
-              Australian arbiter of cool Kym Ellery teams up with Moda Operandi.
-            </p>
-            <p class="product__price">$52.00</p>
-          </div>
-          <a class="product__add" href="#">
-            <img
-              class="product__icon"
-              src="@/assets/images/cart.svg"
-              alt="cart"
-            />Add to Cart
-          </a>
-        </div>
-        <!-- /.product -->
-        <div class="product">
-          <a href="product.html">
-            <img
-              class="product__img"
-              src="@/assets/images/product4.png"
-              alt="product"
-            />
-          </a>
-          <div class="product__info">
-            <a class="product__name" href="product.html"
-              >ELLERY X M'O CAPSULE</a
-            >
-            <p class="product__description">
-              Known for her sculptural takes on traditional tailoring,
-              Australian arbiter of cool Kym Ellery teams up with Moda Operandi.
-            </p>
-            <p class="product__price">$52.00</p>
-          </div>
-          <a class="product__add" href="#">
-            <img
-              class="product__icon"
-              src="@/assets/images/cart.svg"
-              alt="cart"
-            />Add to Cart
-          </a>
-        </div>
-        <!-- /.product -->
-        <div class="product">
-          <a href="product.html">
-            <img
-              class="product__img"
-              src="@/assets/images/product5.png"
-              alt="product"
-            />
-          </a>
-          <div class="product__info">
-            <a class="product__name" href="product.html"
-              >ELLERY X M'O CAPSULE</a
-            >
-            <p class="product__description">
-              Known for her sculptural takes on traditional tailoring,
-              Australian arbiter of cool Kym Ellery teams up with Moda Operandi.
-            </p>
-            <p class="product__price">$52.00</p>
-          </div>
-          <a class="product__add" href="#">
-            <img
-              class="product__icon"
-              src="@/assets/images/cart.svg"
-              alt="cart"
-            />Add to Cart
-          </a>
-        </div>
-        <!-- /.product -->
-        <div class="product">
-          <a href="product.html">
-            <img
-              class="product__img"
-              src="@/assets/images/product6.png"
-              alt="product"
-            />
-          </a>
-          <div class="product__info">
-            <a class="product__name" href="product.html"
-              >ELLERY X M'O CAPSULE</a
-            >
-            <p class="product__description">
-              Known for her sculptural takes on traditional tailoring,
-              Australian arbiter of cool Kym Ellery teams up with Moda Operandi.
-            </p>
-            <p class="product__price">$52.00</p>
-          </div>
-          <a class="product__add" href="#">
-            <img
-              class="product__icon"
-              src="@/assets/images/cart.svg"
-              alt="cart"
-            />Add to Cart
-          </a>
-        </div>
-        <!-- /.product -->
       </div>
       <!-- /.product-box__content -->
       <router-link to="/catalog">
@@ -264,7 +102,7 @@
         <div class="features__img">
           <img
             class="features__icon"
-            src="@/assets/images/delivery.svg"
+            src="http://localhost:3000/images/delivery.svg"
             alt="icon"
           />
         </div>
@@ -278,7 +116,7 @@
         <div class="features__img">
           <img
             class="features__icon"
-            src="@/assets/images/discount.svg"
+            src="http://localhost:3000/images/discount.svg"
             alt="icon"
           />
         </div>
@@ -292,7 +130,7 @@
         <div class="features__img">
           <img
             class="features__icon"
-            src="@/assets/images/quality.svg"
+            src="http://localhost:3000/images/quality.svg"
             alt="icon"
           />
         </div>
@@ -309,10 +147,15 @@
 </template>
 
 <script>
+import ProductList from '../ProductList.vue';
+
 export default {
   name: 'Intro',
   props: {
     msg: String,
+  },
+  components: {
+    ProductList,
   },
 };
 </script>
